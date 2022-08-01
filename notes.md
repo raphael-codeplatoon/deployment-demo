@@ -1,29 +1,27 @@
-# Fullstack react + django
+# Deployment
 
-differences:
+- deployment
+    - get the app running on AWS EC2
+    - learn some differences between running on local host and a live site
 
-- we need to build the react application, and serving the built react app from django's static folder
-- we are going to add Django REST framework to our views.
-- we are going to include CSRF tokens in AJAX requests
+- DNS
+    - Domain Name System, a network of databases that translate IP addresses into domain names
+    - understand a couple of different types of DNS records (A record, CNAME record)
 
-
-type `npm run <script_name>` to run a script from your package.json
-
-
-for js projects, the package.json is like requirements.txt and manage.py in one file.
-
-
-two types of data:
-serial data: "hello world". just a series of letters, one after another
+- HTTPS
+    - get a green lock in the URL bar so your website looks secure
+    - understand what SSL/TLS are, and the types of attacks it prevents against
+    - access 'powerful features' for the front-end that are only available in 'secure contexts', such as geolocation, DeviceOrientation/DeviceMotion, getUserMedia, and WebMIDI
 
 
-non-serial data: 
-alice = {
-    name: 'alice',
-    address: {
-        street: 12,
-        roommates: ['bob', 'dan']
-    }
-}
 
-headers that start with X- are custom headers, not necessarily official/standardized
+## changes to our django app
+
+- set debug=False in settings.py
+- set ALLOWED_HOSTS = ['*']
+- set CSRF_TRUSTED_ORIGINS = ['https://websiteurl.com']
+- 
+
+we'll use SSH keys to log in to our server
+usually created in a pair: private key stays safe on your local machine, public key goes to the server
+AWS knows what we're trying to do, so they can generate both keys, put the public key where it belongs, and give us the private key
